@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:up_003_mealsapp/screen/screen_category_meals.dart';
 
@@ -7,16 +6,24 @@ class CategoryItem extends StatelessWidget {
   final String title;
   final Color color;
 
-  const CategoryItem(this.id, this.title, this.color, {super.key});
+  const CategoryItem(
+    this.id,
+    this.title,
+    this.color,
+  );
 
   void selectCategory(BuildContext naviCtx) {
-    Navigator.of(naviCtx).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return CategoryMealsScreen(id, title);
-        },
-      ),
-    );
+    Navigator.of(naviCtx).pushNamed('/categories-meals', arguments: {
+      'id': id,
+      'title': title,
+    });
+    // Navigator.of(naviCtx).push(
+    //   MaterialPageRoute(
+    //     builder: (_) {
+    //       return CategoryMealsScreen(id, title);
+    //     },
+    //   ),
+    // );
   }
 
   @override

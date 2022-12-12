@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:up_003_mealsapp/screen/screen_category_meals.dart';
 import './home.dart';
 
 void main() {
@@ -6,7 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -74,6 +75,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const MyHomePage(),
+      routes: {
+        '/categories-meals': (ctx) => CategoryMealsScreen()
+      },
     );
   }
 }

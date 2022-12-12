@@ -3,7 +3,7 @@ import 'package:up_003_mealsapp/models/model_data.dart';
 import 'package:up_003_mealsapp/widgets/widget_category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+  const CategoriesScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
