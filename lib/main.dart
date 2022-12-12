@@ -29,7 +29,20 @@ class MyApp extends StatelessWidget {
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.bold,
           ),
-
+          displayMedium: TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+            fontFamily: 'Raleway',
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
+          ),
+          displaySmall: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: 'Raleway',
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
+          ),
           titleLarge: TextStyle(
             fontSize: 40,
             fontFamily: 'Raleway',
