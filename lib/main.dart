@@ -60,11 +60,13 @@ class MyApp extends StatelessWidget {
           titleMedium: TextStyle(
             fontSize: 30,
             fontFamily: 'Raleway',
+            fontStyle: FontStyle.italic,
             fontWeight: FontWeight.w500,
           ),
           titleSmall: TextStyle(
             fontSize: 20,
             fontFamily: 'Raleway',
+            fontStyle: FontStyle.italic,
             fontWeight: FontWeight.w300,
           ),
           bodyLarge: TextStyle(
