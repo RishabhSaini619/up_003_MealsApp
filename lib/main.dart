@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:up_003_mealsapp/screen/screen_category_meals.dart';
+import 'package:flutter/services.dart';
+import './screen/screen_categories.dart';
+import './screen/screen_category_meals.dart';
 import './home.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -74,9 +80,12 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      initialRoute: '/',
       home: const MyHomePage(),
       routes: {
-        '/categories-meals': (ctx) => CategoryMealsScreen()
+        '/': (ctx) => const MyHomePage(),
+        CategoriesScreen.routeName: (ctx) => const CategoriesScreen(),
+        CategoryMealsScreen.routeName: (ctx) => const CategoryMealsScreen(),
       },
     );
   }
