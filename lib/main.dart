@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(),
       routes: {
         'home': (ctx) => const MyHomePage(),
-        MealsScreen.routeName: (ctx) => const MealsScreen(),
+        // MealsScreen.routeName: (ctx) => const MealsScreen(),
         CategoriesScreen.routeName: (ctx) => const CategoriesScreen(),
         CategoryMealsScreen.routeName: (ctx) => const CategoryMealsScreen(),
       },

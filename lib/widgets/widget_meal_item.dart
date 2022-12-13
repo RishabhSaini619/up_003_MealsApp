@@ -1,66 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:up_003_mealsapp/models/model_meal.dart';
 import 'package:up_003_mealsapp/screen/screen_category_meals.dart';
 
 class MealItem extends StatelessWidget {
-  final String id;
   final String title;
+  final String imageUrl;
+  final int duration;
+  final Complexity complexity;
+  final Affordability affordability;
 
-  const MealItem(
-    this.id,
-    this.title,
-  );
+   MealItem({
+     @required this.title,
+     @required this.imageUrl,
+     @required this.duration,
+     @required this.complexity,
+     @required this.affordability,
+  });
 
-  // void selectCategory(BuildContext naviCtx) {
-  //   Navigator.of(naviCtx).pushNamed(
-  //     CategoryMealsScreen.routeName,
-  //     arguments: {
-  //       'id': id,
-  //       'title': title,
-  //     },
-  //   );
-  //
-  //   // Navigator.of(naviCtx).push(
-  //   //   MaterialPageRoute(
-  //   //     builder: (_) {
-  //   //       return CategoryMealsScreen(id, title);
-  //   //     },
-  //   //   ),
-  //   // );
-  // }
+  void selectMeal(BuildContext naviCtx) {
+    Navigator.of(naviCtx).pushNamed(
+      CategoryMealsScreen.routeName,
+      arguments: {
+        'title': title,
+      },
+    );
+
+    // Navigator.of(naviCtx).push(
+    //   MaterialPageRoute(
+    //     builder: (_) {
+    //       return CategoryMealsScreen(id, title);
+    //     },
+    //   ),
+    // );
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // onTap: () => selectCategory(context),
+      onTap: () => selectMeal(context),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
-      child: Container(
-        padding: const EdgeInsets.all(25),
-        decoration: const BoxDecoration(
-          shape: BoxShape.rectangle,
-          // borderRadius: BorderRadius.circular(20),
+      child: Card(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
+            topRight: Radius.circular(30),
+            bottomLeft: Radius.circular(30),
           ),
-          color: Colors.blueAccent,
-          // gradient: LinearGradient(
-          //   colors: [
-          //     color.withOpacity(0.6),
-          //     color,
-          //     color,
-          //     color,
-          //     color.withOpacity(0.6),
-          //   ],
-          //   tileMode: TileMode.mirror,
-          //   begin: Alignment.topRight,
-          //   end: Alignment.bottomLeft,
-          // ),
         ),
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyLarge,
+        elevation: 4,
+        margin: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Stack(
+              children:  [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    bottomLeft: Radius.circular(30),
+                  ),
+                  child: Image.network(imageUrl,
+                  height: 250,width: double.infinity,
+                  fit: BoxFit.cover,
+                  ),
+
+                )
+              ],
+            )
+          ],
         ),
       ),
     );
