@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:up_003_mealsapp/models/model_data.dart';
+import 'package:up_003_mealsapp/models/model_basic_data.dart';
 import 'package:up_003_mealsapp/widgets/widget_category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -25,10 +25,10 @@ class CategoriesScreen extends StatelessWidget {
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        children: BasicData.map((categoryData) => CategoryItem(
-              categoryData.id,
-              categoryData.title,
-              categoryData.color,
+        children: basicCategoryData.map((categoryData) => CategoryItem(
+              categoryData.categoryId,
+              categoryData.categoryTitle,
+              categoryData.categoryBGColor,
             )).toList(),
       ),
     );

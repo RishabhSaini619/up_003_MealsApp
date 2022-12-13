@@ -24,11 +24,10 @@ class CategoryMealsScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'The Recipes For This Category',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
+      body: ListView.builder(
+        itemBuilder: (recipeContext, index) {
+          
+        },
       ),
     );
   }
