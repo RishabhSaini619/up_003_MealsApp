@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 class Meal {
   final String id;
   final String title;
-  final List<String> categories;
   final String imageUrl;
+  final List<String> categories;
   final List<String> ingredients;
   final List<String> steps;
   final int duration;
@@ -16,7 +16,7 @@ class Meal {
   final bool isVegetarian;
   final bool isLactoseFree;
 
-  const Meal ({
+  const Meal({
     @required this.id,
     @required this.title,
     @required this.categories,
@@ -64,8 +64,6 @@ class Meal {
 //     @required this.isMealLactoseFree,
 //   });
 // }
-
-
 
 enum Complexity {
   Simple,

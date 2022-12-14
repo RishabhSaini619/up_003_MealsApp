@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:up_003_mealsapp/models/model_meal.dart';
-import 'package:up_003_mealsapp/screen/screen_category_meals.dart';
+import 'package:up_003_mealsapp/screen/screen_meal_details.dart';
 
 class MealItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
   final int duration;
@@ -10,6 +11,7 @@ class MealItem extends StatelessWidget {
   final Affordability affordability;
 
   MealItem({
+    @required this.id,
     @required this.title,
     @required this.imageUrl,
     @required this.duration,
@@ -17,11 +19,11 @@ class MealItem extends StatelessWidget {
     @required this.affordability,
   });
 
-  void selectMeal(BuildContext naviCtx) {
+  void mealDetails(BuildContext naviCtx) {
     Navigator.of(naviCtx).pushNamed(
-      CategoryMealsScreen.routeName,
+      MealDetailsScreen.routeName,
       arguments: {
-        'title': title,
+        'id': id,
       },
     );
 
@@ -78,7 +80,7 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => selectMeal(context),
+      onTap: () => mealDetails(context),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
       child: Card(
@@ -110,7 +112,7 @@ class MealItem extends StatelessWidget {
                   bottom: 10,
                   right: 10,
                   child: Container(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: const BoxDecoration(
                         color: Colors.white60,
                         shape: BoxShape.rectangle,
@@ -136,10 +138,10 @@ class MealItem extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.timer_sharp,
+                      const Icon(
+                        Icons.timer_sharp
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                         height: 5,
                       ),
@@ -148,27 +150,27 @@ class MealItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(
-                        Icons.work_history_outlined,
-                      ),
-                      SizedBox(
+                      const Icon(Icons.work_history_outlined),
+                      const SizedBox(
                         width: 5,
                         height: 5,
                       ),
-                      Text('$complexityValue'),
+                      Text(complexityValue),
                     ],
                   ),
                   Row(
                     children: [
-                      Text('₹',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),),
-                      SizedBox(
+                      const Text(
+                        '₹',
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
+                      const SizedBox(
                         width: 5,
                         height: 5,
                       ),
-                      Text('$affordabilityValue'),
+                      Text(affordabilityValue),
                     ],
                   ),
                 ],
