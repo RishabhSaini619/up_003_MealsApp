@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Meals App',
       theme: ThemeData(
+        primaryColor: Colors.deepOrange,
         canvasColor: Colors.grey.shade50,
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.deepOrange,
