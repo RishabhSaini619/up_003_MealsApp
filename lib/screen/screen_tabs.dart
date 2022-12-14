@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:up_003_mealsapp/screen/screen_categories.dart';
 import 'package:up_003_mealsapp/screen/screen_favorites.dart';
+import 'package:up_003_mealsapp/widgets/widget_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -29,6 +30,10 @@ class _TabsScreenState extends State<TabsScreen> {
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
+
+      drawerEnableOpenDragGesture: true,
+      endDrawerEnableOpenDragGesture: true,
+      endDrawer:  const MainDrawer(),
       body: selectedScreen[selectedScreenIndex]['screen'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: selectedBottomNavigationBarItem,

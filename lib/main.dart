@@ -21,8 +21,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Meals App',
       theme: ThemeData(
+        backgroundColor: Colors.white70,
         primaryColor: Colors.deepOrange,
         canvasColor: Colors.grey.shade50,
         colorScheme: ColorScheme.fromSwatch(
