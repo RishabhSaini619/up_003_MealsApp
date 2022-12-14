@@ -9,7 +9,7 @@ class MealDetailsScreen extends StatelessWidget {
   Widget buildSelectionTiles(BuildContext context, String title, Widget body) {
     return Container(
       padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.grey, width: 2),
@@ -65,104 +65,119 @@ class MealDetailsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(5),
         child: Column(
           children: [
             Container(
-
               width: double.infinity,
-              margin: const EdgeInsets.all(5),
-              padding: const EdgeInsets.all(5),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Colors.white,
-                border: Border.all(color: Colors.grey, width: 2),
+                border: Border.all(color: Colors.grey, width: 3),
                 shape: BoxShape.rectangle,
                 borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(15),
                   bottomLeft: Radius.circular(15),
                 ),
               ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(15),
-                  bottomLeft: Radius.circular(15),
-                ),
-                child: Image.network(
-                  selectedMeal.imageUrl,
-                  alignment: Alignment.center,
-                  height: 250,
-                  width: double.infinity,
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            //Categories
-            buildSelectionTiles(
-              context,
-              'Categories',
-              buildContainer(
-                ListView.builder(
-                  itemCount: selectedMeal.categories.length,
-                  itemBuilder: (ctx, index) => ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.deepOrangeAccent,
-                      child: Text(
-                        '#${index + 1}',
-                        style: Theme.of(context).textTheme.bodyMedium,
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey, width: 2),
+                      shape: BoxShape.rectangle,
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
                       ),
                     ),
-                    title: Text(
-                      selectedMeal.categories[index],
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            //Ingredients
-            buildSelectionTiles(
-              context,
-              'Ingredients',
-              buildContainer(
-                ListView.builder(
-                  itemCount: selectedMeal.ingredients.length,
-                  itemBuilder: (ctx, index) => ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.deepOrangeAccent,
-                      child: Text(
-                        '#${index + 1}',
-                        style: Theme.of(context).textTheme.bodyMedium,
+
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                      ),
+                      child: Image.network(
+                        selectedMeal.imageUrl,
+                        alignment: Alignment.center,
+                        height: 250,
+                        width: double.infinity,
+                        fit: BoxFit.fill,
                       ),
                     ),
-                    title: Text(
-                      selectedMeal.ingredients[index],
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            //Steps
-            buildSelectionTiles(
-              context,
-              'Steps',
-              buildContainer(
-                ListView.builder(
-                  itemCount: selectedMeal.steps.length,
-                  itemBuilder: (ctx, index) => ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.deepOrangeAccent,
-                      child: Text(
-                        '#${index + 1}',
-                        style: Theme.of(context).textTheme.bodyMedium,
+                  ), //Categories
+                  buildSelectionTiles(
+                    context,
+                    'Categories',
+                    buildContainer(
+                      ListView.builder(
+                        itemCount: selectedMeal.categories.length,
+                        itemBuilder: (ctx, index) => ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.deepOrangeAccent,
+                            child: Text(
+                              '#${index + 1}',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                          title: Text(
+                            selectedMeal.categories[index],
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
                       ),
                     ),
-                    title: Text(
-                      selectedMeal.steps[index],
-                      style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+
+                  //Ingredients
+                  buildSelectionTiles(
+                    context,
+                    'Ingredients',
+                    buildContainer(
+                      ListView.builder(
+                        itemCount: selectedMeal.ingredients.length,
+                        itemBuilder: (ctx, index) => ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.deepOrangeAccent,
+                            child: Text(
+                              '#${index + 1}',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                          title: Text(
+                            selectedMeal.ingredients[index],
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  //Steps
+                  buildSelectionTiles(
+                    context,
+                    'Steps',
+                    buildContainer(
+                      ListView.builder(
+                        itemCount: selectedMeal.steps.length,
+                        itemBuilder: (ctx, index) => ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.deepOrangeAccent,
+                            child: Text(
+                              '#${index + 1}',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                          title: Text(
+                            selectedMeal.steps[index],
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             // buildSelectionTiles(
