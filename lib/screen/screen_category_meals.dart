@@ -17,7 +17,7 @@ class CategoryMealsScreen extends StatefulWidget {
 }
 
 class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
-  String categoryMealsTitle;
+  String categoryMealTitle;
   List<Meal> displayMeals;
 
   @override
@@ -43,7 +43,8 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "$categoryMealsTitle Dishes",
+          "Dishes",
+          // "$categoryMealTitle Dishes",
           style: Theme.of(context).textTheme.displayMedium,
         ),
         centerTitle: true,

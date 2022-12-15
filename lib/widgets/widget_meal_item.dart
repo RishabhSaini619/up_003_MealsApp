@@ -26,6 +26,7 @@ class MealItem extends StatelessWidget {
       MealDetailsScreen.routeName,
       arguments: {
         'id': id,
+        'title':title,
       },
     ).then((value) {
       if(value != null) {

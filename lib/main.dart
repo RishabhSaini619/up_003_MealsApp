@@ -70,21 +70,21 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
           titleSmall: TextStyle(
-            fontSize: 20,
+            fontSize: 25,
             fontFamily: 'Raleway',
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.w300,
           ),
           bodyLarge: TextStyle(
-            fontSize: 20,
+            fontSize: 25,
             color: Color.fromRGBO(20, 51, 51, 1),
           ),
           bodyMedium: TextStyle(
-            fontSize: 15,
+            fontSize: 20,
             color: Color.fromRGBO(20, 51, 51, 1),
           ),
           bodySmall: TextStyle(
-            fontSize: 10,
+            fontSize: 15,
             color: Color.fromRGBO(20, 51, 51, 1),
           ),
         ),
