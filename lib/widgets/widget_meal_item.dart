@@ -10,6 +10,9 @@ class MealItem extends StatelessWidget {
   final Complexity complexity;
   final Affordability affordability;
   final Function removeMealItem;
+  final Function toggleFavListBttFun;
+
+
 
   MealItem({
     @required this.id,
@@ -18,7 +21,9 @@ class MealItem extends StatelessWidget {
     @required this.duration,
     @required this.complexity,
     @required this.affordability,
-    @required this.removeMealItem,
+    this.removeMealItem,
+    this.toggleFavListBttFun,
+
   });
 
   void mealDetails(BuildContext naviCtx) {
@@ -26,15 +31,13 @@ class MealItem extends StatelessWidget {
       MealDetailsScreen.routeName,
       arguments: {
         'id': id,
-        'title':title,
+        'title': title,
       },
     ).then((value) {
-      if(value != null) {
+      if (value != null) {
         removeMealItem(value);
       }
     });
-
-
   }
 
   String get affordabilityValue {
@@ -113,16 +116,18 @@ class MealItem extends StatelessWidget {
                   bottom: 10,
                   right: 10,
                   child: Container(
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                     decoration: const BoxDecoration(
-                        color: Colors.white60,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15),
-                        )),
+                      color: Colors.white60,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                      ),
+                    ),
                     child: Text(
                       title,
+                      textAlign: TextAlign.end,
                       style: Theme.of(context).textTheme.titleSmall,
                       softWrap: true,
                       overflow: TextOverflow.fade,
@@ -172,6 +177,14 @@ class MealItem extends StatelessWidget {
                       Text(affordabilityValue),
                     ],
                   ),
+                  // IconButton(
+                  //   onPressed: () => toggleFavListBttFun(),
+                  //   icon: const Icon(
+                  //     Icons.star_rounded,
+                  //     color: Colors.red,
+                  //     size: 30,
+                  //   ),
+                  // ),
                 ],
               ),
             ),

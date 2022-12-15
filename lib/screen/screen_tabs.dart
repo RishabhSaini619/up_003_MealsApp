@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:up_003_mealsapp/models/model_meal.dart';
 import 'package:up_003_mealsapp/screen/screen_categories.dart';
 import 'package:up_003_mealsapp/screen/screen_favorites.dart';
 import 'package:up_003_mealsapp/widgets/widget_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
+  static const routeName = 'tabs-screen';
+
+  final List<Meal> favoriteMealList;
+
+  const TabsScreen(this.favoriteMealList, {Key key}) : super(key: key);
+
   @override
   State<TabsScreen> createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map<String, dynamic>> selectedScreen = [
-    {'screen': const CategoriesScreen(), 'title': 'Categories'},
-    {'screen': FavoritesScreen(), 'title': 'Favorites'},
-  ];
+  List<Map<String, dynamic>> selectedScreen;
+  @override
+  void initState() {
+    selectedScreen = [
+      {'screen': const CategoriesScreen(), 'title': 'Categories'},
+      {
+        'screen': FavoritesScreen(widget.favoriteMealList),
+        'title': 'Favorites'
+      },
+    ];
+    super.initState();
+  }
+
   int selectedScreenIndex = 0;
   void selectedBottomNavigationBarItem(int index) {
     setState(() {
@@ -30,10 +46,9 @@ class _TabsScreenState extends State<TabsScreen> {
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
-
       drawerEnableOpenDragGesture: true,
       endDrawerEnableOpenDragGesture: true,
-      endDrawer:  const MainDrawer(),
+      endDrawer: const MainDrawer(),
       body: selectedScreen[selectedScreenIndex]['screen'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: selectedBottomNavigationBarItem,

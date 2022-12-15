@@ -4,7 +4,12 @@ import 'package:up_003_mealsapp/models/model_basic_data.dart';
 class MealDetailsScreen extends StatelessWidget {
   static const routeName = 'meal-details-screen';
 
-  const MealDetailsScreen({Key key}) : super(key: key);
+  final Function toggleFavListBttFun;
+  final Function isMealFavorite;
+
+  const MealDetailsScreen(this.toggleFavListBttFun, this.isMealFavorite,
+      {Key key})
+      : super(key: key);
 
   Widget buildSelectionTiles(BuildContext context, String title, Widget body) {
     return Container(
@@ -59,11 +64,20 @@ class MealDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          selectedMeal.title,
+          '{$selectedMeal.title}',
           style: Theme.of(context).textTheme.displaySmall,
         ),
         centerTitle: true,
         actions: [
+          IconButton(
+            onPressed: () => toggleFavListBttFun(mealId),
+            icon: Icon(
+              isMealFavorite(mealId)
+                  ? Icons.star_rounded
+                  : Icons.star_border_rounded,
+              color: Colors.white,
+            ),
+          ),
           IconButton(
             onPressed: () {
               Navigator.of(context).pop(mealId);
@@ -72,7 +86,6 @@ class MealDetailsScreen extends StatelessWidget {
               Icons.delete,
             ),
             color: Colors.white,
-
           ),
         ],
       ),

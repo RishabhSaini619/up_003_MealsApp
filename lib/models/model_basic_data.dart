@@ -62,7 +62,7 @@ const basicMealData = [
       'c1',
       'c2',
     ],
-    title: 'Spaghetti with Tomato Sauce',
+    title: 'Tomato Spaghetti',
     affordability: Affordability.Affordable,
     complexity: Complexity.Simple,
     imageUrl:
@@ -124,7 +124,7 @@ const basicMealData = [
       'c2',
       'c3',
     ],
-    title: 'Classic Hamburger',
+    title: 'Hamburger',
     affordability: Affordability.Pricey,
     complexity: Complexity.Simple,
     imageUrl:
@@ -192,7 +192,7 @@ const basicMealData = [
           'c5',
       'c10',
     ],
-    title: 'Salad with Smoked Salmon',
+    title: 'Smoked Salmon Salad',
     affordability: Affordability.Luxurious,
     complexity: Complexity.Simple,
     imageUrl:
@@ -227,7 +227,7 @@ const basicMealData = [
       'c6',
       'c10',
     ],
-    title: 'Delicious Orange Mousse',
+    title: 'Orange Mousse',
     affordability: Affordability.Affordable,
     complexity: Complexity.Hard,
     imageUrl:
@@ -293,7 +293,7 @@ const basicMealData = [
     categories: [
       'c8',
     ],
-    title: 'Creamy Indian Chicken Curry',
+    title: 'Indian Chicken Curry',
     affordability: Affordability.Pricey,
     complexity: Complexity.Challenging,
     imageUrl:
@@ -377,7 +377,7 @@ const basicMealData = [
       'c5',
       'c10',
     ],
-    title: 'Asparagus Salad with Cherry Tomatoes',
+    title: 'Asparagus Salad',
     affordability: Affordability.Luxurious,
     complexity: Complexity.Simple,
     imageUrl:

@@ -173,7 +173,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     Navigator.of(context).pop();
                   },
                   child: Container(
-                    margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                    margin: const EdgeInsets.fromLTRB(100, 200, 100, 10),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor.withOpacity(0.8),
@@ -188,32 +188,16 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          'Save',
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
                         const Icon(
                           Icons.save_as_sharp,
                           size: 20,
                         ),
+                        Text(
+                          'Save',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
                       ],
                     ),
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    final selectedFilters = {
-                      'glutenFreeFilter': isGlutenFree,
-                      'veganFilter': isVegan,
-                      'vegetarianFilter': isVegetarian,
-                      'lactoseFreeFilter': isLactoseFree,
-                    };
-                    widget.saveFilter(selectedFilters);
-                    Navigator.of(context).pop();
-                  },
-                  icon: const Icon(
-                    Icons.save_as_sharp,
-                    size: 20,
                   ),
                 ),
               ],
