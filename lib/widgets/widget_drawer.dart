@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:up_003_mealsapp/screen/screen_filter.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,9 @@ class MainDrawer extends StatelessWidget {
       );
     }
 
-    Widget buildListTile(String tileTitle, IconData tileIcon) {
+    Widget buildListTile(String tileTitle, IconData tileIcon, Function tileFunction) {
       return ListTile(
+        onTap: tileFunction,
         leading: Icon(
           tileIcon,
           size: 20,
@@ -60,7 +63,7 @@ class MainDrawer extends StatelessWidget {
               margin: const EdgeInsets.only(top: 10, bottom: 10),
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).accentColor,
                 border: Border.all(color: Colors.black, width: 1),
                 shape: BoxShape.rectangle,
                 borderRadius: const BorderRadius.only(
@@ -82,17 +85,21 @@ class MainDrawer extends StatelessWidget {
                     Column(
                       children: [
                         buildContainer(
-                          buildListTile('Meal', Icons.restaurant_rounded),
+                          buildListTile('Meal', Icons.restaurant_rounded,() {
+                            Navigator.of(context).pushReplacementNamed('home');
+                          }),
                           Colors.white,
                         ),
                         buildContainer(
-                          buildListTile('Filters', Icons.filter_list_rounded),
+                          buildListTile('Filters', Icons.filter_list_rounded,() {
+                            Navigator.of(context).pushNamed(FiltersScreen.routeName);
+                          }),
                           Colors.white,
                         ),
-                        buildContainer(
-                          buildListTile('Settings', Icons.settings),
-                          Colors.white,
-                        ),
+                        // buildContainer(
+                        //   buildListTile('Settings', Icons.settings,() {}),
+                        //   Colors.white,
+                        // ),
                         // buildContainer(
                         //   buildListTile('Settings', Icons.settings),
                         // ),

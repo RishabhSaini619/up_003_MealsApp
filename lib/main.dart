@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:up_003_mealsapp/screen/screen_filter.dart';
 import 'package:up_003_mealsapp/screen/screen_meals.dart';
 import './screen/screen_categories.dart';
 import './screen/screen_category_meals.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Meals App',
       theme: ThemeData(
+        accentColor: Colors.white,
         backgroundColor: Colors.white70,
         primaryColor: Colors.deepOrange,
         canvasColor: Colors.grey.shade50,
@@ -91,9 +93,11 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(),
       routes: {
         'home': (ctx) => const MyHomePage(),
-        MealDetailsScreen.routeName: (ctx) =>   MealDetailsScreen(),
+        MealDetailsScreen.routeName: (ctx) => const MealDetailsScreen(),
         CategoriesScreen.routeName: (ctx) => const CategoriesScreen(),
         CategoryMealsScreen.routeName: (ctx) => const CategoryMealsScreen(),
+        FiltersScreen.routeName: (ctx) =>  FiltersScreen(),
+
       },
     );
   }

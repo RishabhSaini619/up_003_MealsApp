@@ -30,7 +30,6 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-
       onTap: () => selectCategory(context),
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
@@ -57,10 +56,12 @@ class CategoryItem extends StatelessWidget {
             end: Alignment.bottomLeft,
           ),
         ),
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyLarge,
+        child: Center(
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.displaySmall,
+          ),
         ),
       ),
     );
