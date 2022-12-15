@@ -1,10 +1,14 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:up_003_mealsapp/widgets/widget_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = 'filters-screen';
+
+  final Function saveFilter;
+  final Map<String, bool> currentFilters;
+
+  const FiltersScreen(this.currentFilters, this.saveFilter, {Key key})
+      : super(key: key);
 
   @override
   State<FiltersScreen> createState() => _FiltersScreenState();
@@ -15,14 +19,24 @@ class _FiltersScreenState extends State<FiltersScreen> {
   bool isVegan = false;
   bool isVegetarian = false;
   bool isLactoseFree = false;
+  @override
+  void initState() {
+    isVegan = widget.currentFilters['veganFilter'];
+    isVegetarian = widget.currentFilters['vegetarianFilter'];
+    isGlutenFree = widget.currentFilters['glutenFreeFilter'];
+    isLactoseFree = widget.currentFilters['lactoseFreeFilter'];
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    Widget SwitchListTileItem(
-      String SwitchListTileItemTitle,
-      String SwitchListTileItemSubtitle,
-      bool SwitchListTileItemBool,
-      Function SwitchListTileItemFunction,
+    Widget switchListTileItem(
+      String switchListTileItemTitle,
+      String switchListTileItemSubtitle,
+      bool switchListTileItemBool,
+      Function switchListTileItemFunction,
+      // Image activeThumbImage,
       Color activeColor,
       Color inActiveColor,
     ) {
@@ -33,15 +47,15 @@ class _FiltersScreenState extends State<FiltersScreen> {
         activeTrackColor: Colors.grey,
         inactiveTrackColor: Colors.grey,
         title: Text(
-          SwitchListTileItemTitle,
+          switchListTileItemTitle,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         subtitle: Text(
-          'This meal is only include $SwitchListTileItemSubtitle ingredients',
+          'This meal is only include $switchListTileItemSubtitle ingredients',
           style: Theme.of(context).textTheme.bodySmall,
         ),
-        value: SwitchListTileItemBool,
-        onChanged: SwitchListTileItemFunction,
+        value: switchListTileItemBool,
+        onChanged: switchListTileItemFunction,
       );
     }
 
@@ -92,7 +106,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             child: ListView(
               children: [
                 //Vegan
-                SwitchListTileItem(
+                switchListTileItem(
                   'Vegan',
                   'Vegan',
                   isVegan,
@@ -101,11 +115,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       isVegan = newValue;
                     });
                   },
+                  // Image.asset('assets/images/vegetarian.png'),
                   Theme.of(context).colorScheme.primary,
                   Theme.of(context).colorScheme.secondary,
                 ),
                 //isVegetarian
-                SwitchListTileItem(
+                switchListTileItem(
                   'Vegetarian',
                   'Vegetarian',
                   isVegetarian,
@@ -114,11 +129,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       isVegetarian = newValue;
                     });
                   },
-                  Colors.red,
-                  Colors.green,
+                  // Image.asset('assets/images/vegetarian.png'),
+
+                  Colors.green, Colors.red,
                 ),
                 //isGlutenFree
-                SwitchListTileItem(
+                switchListTileItem(
                   'Gluten-Free',
                   'isGluten free',
                   isGlutenFree,
@@ -127,11 +143,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       isGlutenFree = newValue;
                     });
                   },
+                  // Image.asset('assets/images/vegetarian.png'),
                   Theme.of(context).colorScheme.primary,
                   Theme.of(context).colorScheme.secondary,
                 ),
                 //isLactoseFree
-                SwitchListTileItem(
+                switchListTileItem(
                   'Lactose-Free',
                   'Lactose free',
                   isLactoseFree,
@@ -140,8 +157,64 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       isLactoseFree = newValue;
                     });
                   },
+                  // Image.asset('assets/images/lactose-free.png'),
                   Theme.of(context).colorScheme.primary,
                   Theme.of(context).colorScheme.secondary,
+                ),
+                InkWell(
+                  onTap: () {
+                    final selectedFilters = {
+                      'glutenFreeFilter': isGlutenFree,
+                      'veganFilter': isVegan,
+                      'vegetarianFilter': isVegetarian,
+                      'lactoseFreeFilter': isLactoseFree,
+                    };
+                    widget.saveFilter(selectedFilters);
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withOpacity(0.8),
+                      border: Border.all(color: Colors.black, width: 1),
+                      shape: BoxShape.rectangle,
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(25),
+                        bottomLeft: Radius.circular(25),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Save',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        const Icon(
+                          Icons.save_as_sharp,
+                          size: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    final selectedFilters = {
+                      'glutenFreeFilter': isGlutenFree,
+                      'veganFilter': isVegan,
+                      'vegetarianFilter': isVegetarian,
+                      'lactoseFreeFilter': isLactoseFree,
+                    };
+                    widget.saveFilter(selectedFilters);
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(
+                    Icons.save_as_sharp,
+                    size: 20,
+                  ),
                 ),
               ],
             ),
