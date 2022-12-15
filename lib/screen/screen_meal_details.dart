@@ -63,6 +63,18 @@ class MealDetailsScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.displaySmall,
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pop(mealId);
+            },
+            icon: const Icon(
+              Icons.delete,
+            ),
+            color: Colors.white,
+
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -93,7 +105,6 @@ class MealDetailsScreen extends StatelessWidget {
                         bottomLeft: Radius.circular(15),
                       ),
                     ),
-
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(15),

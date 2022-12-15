@@ -9,6 +9,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeMealItem;
 
   MealItem({
     @required this.id,
@@ -17,6 +18,7 @@ class MealItem extends StatelessWidget {
     @required this.duration,
     @required this.complexity,
     @required this.affordability,
+    @required this.removeMealItem,
   });
 
   void mealDetails(BuildContext naviCtx) {
@@ -25,15 +27,13 @@ class MealItem extends StatelessWidget {
       arguments: {
         'id': id,
       },
-    );
+    ).then((value) {
+      if(value != null) {
+        removeMealItem(value);
+      }
+    });
 
-    // Navigator.of(naviCtx).push(
-    //   MaterialPageRoute(
-    //     builder: (_) {
-    //       return CategoryMealsScreen(id, title);
-    //     },
-    //   ),
-    // );
+
   }
 
   String get affordabilityValue {
@@ -138,9 +138,7 @@ class MealItem extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(
-                        Icons.timer_sharp
-                      ),
+                      const Icon(Icons.timer_sharp),
                       const SizedBox(
                         width: 5,
                         height: 5,
